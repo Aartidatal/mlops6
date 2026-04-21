@@ -23,12 +23,9 @@ jobs:
 
     - name: Test Flask app
       run: |
-        python app.py &
+        nohup python app.py &
         sleep 5
         curl -f http://127.0.0.1:5000
 
     - name: Build Docker image
       run: docker build -t ml-app .
-
-    - name: Run Docker container
-      run: docker run -d -p 5001:5000 ml-app
